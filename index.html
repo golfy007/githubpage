@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .loading {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 20px;
+            background-color: #007bff;
+            width: 0;
+            transition: width 1s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loading">Loading... <span id="counter">1</span>%</div>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <img src="https://example.com/path/to/your/image.jpg" alt="Cute Cat">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let counterElement = document.getElementById('counter');
+            let progressBarFill = document.getElementById('progress-bar-fill');
+            let counter = parseInt(counterElement.textContent);
+
+            function updateCounter() {
+                if (counter < 100) {
+                    counter++;
+                    counterElement.textContent = counter;
+                    progressBarFill.style.width = counter + '%';
+                } else {
+                    window.location.href = 'https://example.com/path/to/your/download/file.zip'; // ลิงก์ไปยังไฟล์ดาวน์โหลดของคุณ
+                }
+            }
+
+            setInterval(updateCounter, 1000);
+        });
+    </script>
+</body>
+</html>
